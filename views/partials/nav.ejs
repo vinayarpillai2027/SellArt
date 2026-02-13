@@ -1,0 +1,25 @@
+    <header class="nav-shell">
+      <div class="nav-inner glass-elevated">
+        <a href="/" class="brand-mark">
+          <span class="brand-icon">A</span>
+          <span class="brand-text">
+            Aurora
+            <span class="brand-sub">Fine Art Studio</span>
+          </span>
+        </a>
+
+        <nav class="nav-links">
+          <a href="/" class="nav-link <%= (active === 'home') ? 'nav-link--active' : '' %>">Home</a>
+          <a href="/shop" class="nav-link <%= (active === 'shop') ? 'nav-link--active' : '' %>">Gallery</a>
+          <a href="/about" class="nav-link <%= (active === 'about') ? 'nav-link--active' : '' %>">About</a>
+          <a href="/contact" class="nav-link <%= (active === 'contact') ? 'nav-link--active' : '' %>">Contact</a>
+          <a href="/cart" class="nav-link nav-cart">
+            <span class="nav-cart-icon">🛒</span>
+            <span>Cart</span>
+            <% if (typeof cartCount !== 'undefined' && cartCount > 0) { %>
+              <span class="nav-cart-badge"><%= cartCount %></span>
+            <% } %>
+          </a>
+        </nav>
+      </div>
+    </header>

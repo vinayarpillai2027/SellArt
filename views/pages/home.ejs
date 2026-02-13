@@ -1,0 +1,59 @@
+<%- include('../partials/head') %>
+<%- include('../partials/nav', { active: 'home' }) %>
+
+<main class="page-shell">
+  <section class="hero-grid">
+    <div class="hero-copy glass-elevated">
+      <p class="eyebrow">Curated fine art</p>
+      <h1 class="hero-title">Illuminate your space with considered originals.</h1>
+      <p class="hero-body">
+        Aurora Gallery is a boutique art studio presenting a tightly curated collection of contemporary
+        paintings, each piece produced in small, collectable series.
+      </p>
+      <div class="hero-actions">
+        <a href="/shop" class="btn btn-primary">Explore the collection</a>
+        <a href="/about" class="btn btn-ghost">Our philosophy</a>
+      </div>
+    </div>
+
+    <div class="hero-featured">
+      <% if (featured && featured.length) { %>
+        <% featured.forEach(function (artwork) { %>
+          <article class="art-card glass-elevated">
+            <div class="art-image-skeleton">
+              <div class="art-image-faux" aria-hidden="true"></div>
+            </div>
+            <div class="art-card-body">
+              <h2 class="art-title"><%= artwork.title %></h2>
+              <p class="art-meta">
+                <span><%= artwork.artist %></span>
+                <span class="dot">•</span>
+                <span><%= artwork.medium %></span>
+              </p>
+              <p class="art-price">$<%= artwork.price.toLocaleString() %></p>
+              <a href="/shop/<%= artwork.id %>" class="btn btn-outline">View details</a>
+            </div>
+          </article>
+        <% }); %>
+      <% } %>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">For considered collectors</h2>
+      <p class="section-body">
+        Every work in the Aurora collection is meticulously photographed, color-balanced, and prepared for
+        archival framing. Shipping is handled with museum-grade packing materials.
+      </p>
+    </div>
+    <div class="pill-row">
+      <div class="pill glass-soft">Archival quality substrates</div>
+      <div class="pill glass-soft">Certificate of authenticity</div>
+      <div class="pill glass-soft">Worldwide insured delivery</div>
+    </div>
+  </section>
+</main>
+
+<%- include('../partials/footer') %>
+

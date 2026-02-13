@@ -1,0 +1,66 @@
+<%- include('../partials/head') %>
+<%- include('../partials/nav', { active: 'contact' }) %>
+
+<main class="page-shell">
+  <section class="section section--narrow">
+    <article class="text-panel glass-elevated">
+      <div class="section-header section-header--tight">
+        <h1 class="section-title">Connect with the studio</h1>
+        <p class="section-body">
+          Share the works you’re considering, ask about framing, or request a private viewing
+          recommendation for your space.
+        </p>
+      </div>
+
+      <% if (submitted) { %>
+        <div class="alert glass-soft">
+          <p class="alert-title">Message received.</p>
+          <p class="alert-body">
+            Thank you <% if (formData && formData.name) { %><%= formData.name %><% } %>. A member of the
+            studio will respond shortly.
+          </p>
+        </div>
+      <% } %>
+
+      <form action="/contact" method="POST" class="form-grid">
+        <div class="form-field">
+          <label for="name">Name</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            required
+            placeholder="Alex Rivera"
+            value="<%= formData && formData.name ? formData.name : '' %>"
+          />
+        </div>
+        <div class="form-field">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            placeholder="you@example.com"
+            value="<%= formData && formData.email ? formData.email : '' %>"
+          />
+        </div>
+        <div class="form-field form-field--full">
+          <label for="message">Message</label>
+          <textarea
+            id="message"
+            name="message"
+            rows="4"
+            placeholder="Share the works you’re drawn to, the room you’re considering, and any timelines."
+          ><%= formData && formData.message ? formData.message : '' %></textarea>
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary btn-large">Send message</button>
+        </div>
+      </form>
+    </article>
+  </section>
+</main>
+
+<%- include('../partials/footer') %>
+

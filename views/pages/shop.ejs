@@ -1,0 +1,43 @@
+<%- include('../partials/head') %>
+<%- include('../partials/nav', { active: 'shop' }) %>
+
+<main class="page-shell">
+  <section class="section">
+    <div class="section-header">
+      <h1 class="section-title">Gallery collection</h1>
+      <p class="section-body">
+        Explore the current selection of originals and limited editions available through Aurora Gallery.
+      </p>
+    </div>
+
+    <div class="art-grid">
+      <% artworks.forEach(function (artwork) { %>
+        <article class="art-card glass-elevated">
+          <div class="art-image-skeleton">
+            <div class="art-image-faux" aria-hidden="true"></div>
+          </div>
+          <div class="art-card-body">
+            <h2 class="art-title"><%= artwork.title %></h2>
+            <p class="art-meta">
+              <span><%= artwork.artist %></span>
+              <span class="dot">•</span>
+              <span><%= artwork.category %></span>
+            </p>
+            <p class="art-price">$<%= artwork.price.toLocaleString() %></p>
+            <p class="art-size"><%= artwork.size %></p>
+            <div class="art-actions">
+              <a href="/shop/<%= artwork.id %>" class="btn btn-outline">View details</a>
+              <form action="/cart/add" method="POST">
+                <input type="hidden" name="artworkId" value="<%= artwork.id %>" />
+                <button type="submit" class="btn btn-primary">Add to cart</button>
+              </form>
+            </div>
+          </div>
+        </article>
+      <% }); %>
+    </div>
+  </section>
+</main>
+
+<%- include('../partials/footer') %>
+

@@ -1,0 +1,40 @@
+<%- include('../partials/head') %>
+<%- include('../partials/nav', { active: 'shop' }) %>
+
+<main class="page-shell">
+  <section class="section section--narrow">
+    <article class="product-detail glass-elevated">
+      <div class="product-media">
+        <div class="product-image-skeleton">
+          <div class="product-image-faux" aria-hidden="true"></div>
+        </div>
+      </div>
+      <div class="product-copy">
+        <p class="eyebrow"><%= artwork.category %> · <%= artwork.medium %></p>
+        <h1 class="product-title"><%= artwork.title %></h1>
+        <p class="product-artist">by <span><%= artwork.artist %></span></p>
+        <p class="product-description"><%= artwork.description %></p>
+
+        <div class="product-meta-row">
+          <div class="product-meta-card glass-soft">
+            <p class="meta-label">Dimensions</p>
+            <p class="meta-value"><%= artwork.size %></p>
+          </div>
+          <div class="product-meta-card glass-soft">
+            <p class="meta-label">Investment</p>
+            <p class="meta-value">$<%= artwork.price.toLocaleString() %></p>
+          </div>
+        </div>
+
+        <form action="/cart/add" method="POST" class="product-actions">
+          <input type="hidden" name="artworkId" value="<%= artwork.id %>" />
+          <button type="submit" class="btn btn-primary btn-large">Add to collection</button>
+          <a href="/shop" class="btn btn-ghost">Back to gallery</a>
+        </form>
+      </div>
+    </article>
+  </section>
+</main>
+
+<%- include('../partials/footer') %>
+
